@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { v4 } from 'uuid'
+import { useSelector, useDispatch } from 'react-redux'
 import Country from './country'
+import { v4 } from 'uuid'
 
 const CountryListStyled = styled.div`
   display: inline-grid;
@@ -11,15 +12,22 @@ const CountryListStyled = styled.div`
 `
 
 function CountryList() {
-  const [countryList, setCountryList] = useState([])
+  const dispatch = useDispatch()
+  const countryList = useSelector(state => state.countryList)
+  console.log('country-list: ', countryList)
+  // const [countryList, setCountryList] = useState([])
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
       .then(response => {
         return response.json()
       })
-      .then(data => {
-        // console.log(data[0])
-        setCountryList(data)
+      .then(list => {
+        dispatch({
+          type: 'SET_COUNTRY_LIST',
+          payload: list
+        })
+        // setCountryList(data)
+        console.log(list.length)
       })
       .catch(() => {
         console.log("Error al conectar a la API")
