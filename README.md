@@ -26,8 +26,8 @@ El ejercicio sirve para aprender:
 
 Para usarla, en el shell de su preferencia, siga estos comandos:
 
-cd directorio_de_trabajo
-git clone https://github.com/alejandrofca/api-paises-con-react-y-redux
-cd api-paises-con-react-y-redux
-npm install
-npm start
+* cd directorio_de_trabajo
+* git clone https://github.com/alejandrofca/api-paises-con-react-y-redux
+* cd api-paises-con-react-y-redux
+* npm install
+* npm start
